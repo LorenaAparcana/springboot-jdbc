@@ -22,10 +22,11 @@ public class ProgramaDAOTests {
 
         List<Programa> programas = programaDAO.list();
         for (Programa programa : programas) {
-            System.out.println(programa.getNombre());
+            System.out.println(programa.getId()+"  "+programa.getNombre());
         }
         Assert.assertTrue(programas.size() > 0);
     }
+
 
     @Test
     public void verifyFind() {
@@ -33,7 +34,9 @@ public class ProgramaDAOTests {
         System.out.println(programa.getNombre());
         Assert.assertTrue(programa.getId() == 1l);
     }
-
+    
+    
+ 
     @Test
     public void verifySave() {
 
@@ -46,19 +49,21 @@ public class ProgramaDAOTests {
         Assert.assertTrue(programa.getId() != null);
     }
 
+      
     @Test
     public void verifyUpdate() {
 
         // cambiar el código para validar
         Programa programa = new Programa();
-        programa.setId(1l);
+        programa.setId(4l);
         programa.setCodigo("999");
-        programa.setNombre("Programa Modificado");
+        programa.setNombre("Programa TECSUP");
 
         programaDAO.update(programa);
-        Assert.assertTrue(programaDAO.get(1l).getCodigo().equals("999"));
+        Assert.assertTrue(programaDAO.get(4l).getCodigo().equals("999"));
     }
 
+     
     @Test
     public void verifyDelete() {
 
@@ -68,5 +73,5 @@ public class ProgramaDAOTests {
 
         Assert.assertTrue(programaDAO.get(3l) == null);
     }
-
+ 
 }

@@ -34,10 +34,19 @@ public Programa get(Long id) {
 
     // Parámetros del QueryForObjet:
     // (1)Query , (2)Array de Parámetros del Query y  (3) el RowMapper
+    try{
     Programa programa = (Programa) this.getJdbcTemplate()
             .queryForObject(sql, new Object[]{id}, new ProgramaRowMapper());
     return programa;
+
+    }catch(Exception e){
+      return null;
 }
+    
+}
+
+
+
 
 @Override
 public void save(Programa t) {
